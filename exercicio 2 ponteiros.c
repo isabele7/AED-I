@@ -10,41 +10,34 @@ Número de membros da banda
 Produtora do cd
 */
 
-#include <stdio.h> 
-
-struct Data {
-  int dia;
-  int mês;
-  int ano;
-}
+#include <stdio.h>
+#include <stdlib.h>
 
 struct CD {
-  char nome[50];
-  struct Data Lancamento;
-  struct Data Contratacao;
-  float valor;
-  int membros;
-  char produtora[50];
-}
+    char nome[50];
+    int dia_lanc, mes_lanc, ano_lanc;
+    int dia_contr, mes_contr, ano_contr;
+    float valor;
+    int num_membros;
+    char produtora[50];
+};
 
-int main(){
-  int i,n;
-  struct CD Bandas*;
-  scanf("%d",&n);
-  for(i=0,i<n;i++){
-    scanf(“%d”,&Bandas[i].membros);
-    scanf(“%f”,&Bandas[i].valor);
-    scanf(“%s”,&Bandas[i].nome);
-    scanf(“%s”,&Bandas[i].produtora);
-    scanf(“%d”,&Bandas[i].Lançamento.dia);
-    scanf(“%d”,&Bandas[i].Lançamento.mes);
-    scanf(“%d”,&Bandas[i].Lançamento.ano);
-    scanf(“%d”,&Bandas[i].Contratacao.dia);
-    scanf(“%d”,&Bandas[i].Contratacao.mes);
-    scanf(“%d”,&Bandas[i].Contratacao.ano);
-  }
-  
+int main() {
+    int n;
+    scanf("%d", &n);
+    struct CD *bandas = malloc(n * sizeof(struct CD)); 
+    for (int i = 0; i < n; i++) {
+        scanf("%s", (bandas+i)->nome);
+        scanf("%d/%d/%d", &(bandas+i)->dia_lanc, &(bandas+i)->mes_lanc, &(bandas+i)->ano_lanc);
+        scanf("%d/%d/%d", &(bandas+i)->dia_contr, &(bandas+i)->mes_contr, &(bandas+i)->ano_contr);
+        scanf("%f", &(bandas+i)->valor);
+        scanf("%d", &(bandas+i)->num_membros);
+        scanf("%s", (bandas+i)->produtora);
+        printf("\n");
+    }
+
+    free(bandas); 
+
+    return 0;
 }
-    
-  
   
