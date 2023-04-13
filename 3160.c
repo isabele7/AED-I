@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-//A struct amigo possui um campo para nome e um ponteiro para o próximo da lista
-
 typedef struct amigo {
     char nome[20];
     struct amigo *prox;
 } Amigo;
+
+//Essa função recebe um nome e aloca dinamicamente um novo amigo na memória, definindo seu nome e inicializando o campo prox como NULL
 
 Amigo* criar_amigo(char nome[]) {
     Amigo* novo = (Amigo*) malloc(sizeof(Amigo));
@@ -15,6 +15,8 @@ Amigo* criar_amigo(char nome[]) {
     novo->prox = NULL;
     return novo;
 }
+
+//A função recebe um ponteiro para uma lista de amigos e um nome e insere um novo amigo com esse nome no final da lista. Se a lista estiver vazia, o novo amigo é o primeiro elemento
 
 void inserir_amigo(Amigo** lista, char nome[]) {
     Amigo* novo = criar_amigo(nome);
@@ -29,6 +31,8 @@ void inserir_amigo(Amigo** lista, char nome[]) {
     }
 }
 
+//A função recebe um ponteiro para uma lista de amigos e uma string com nomes de amigos separados por espaço. Ela chama a função inserir_amigo para cada nome na string, adicionando-os um a um à lista
+
 void inserir_lista_amigos(Amigo** lista, char lista_nova[]) {
     char* token = strtok(lista_nova, " ");
     while (token != NULL) {
@@ -37,6 +41,8 @@ void inserir_lista_amigos(Amigo** lista, char lista_nova[]) {
     }
 }
 
+//A função recebe um ponteiro para uma lista de amigos e imprime os nomes de todos os amigos nessa lista
+
 void imprimir_lista_amigos(Amigo* lista) {
     while (lista != NULL) {
         printf("%s ", lista->nome);
@@ -44,6 +50,8 @@ void imprimir_lista_amigos(Amigo* lista) {
     }
     printf("\n");
 }
+
+ //A função recebe um ponteiro para uma lista de amigos, uma string com nomes de amigos separados por espaço e o nome de um amigo que indicou a lista
 
 void inserir_amigos_indicacao(Amigo** lista, char lista_nova[], char amigo_indicacao[]) {
     if (strcmp(amigo_indicacao, "nao") == 0) {
@@ -69,24 +77,25 @@ void inserir_amigos_indicacao(Amigo** lista, char lista_nova[], char amigo_indic
     }
 }
 
+//No programa principal são declaradas três strings para entrada de dados: amigos, lista_nova e amigo_indicacao
 int main() {
     char amigos[100];
     char lista_nova[100];
     char amigo_indicacao[20];
+    //A lista começa vazia
     Amigo* lista = NULL;
-
+    //Leitura e inserção dos nomes da lista inicial na lista encadeada "lista"
     fgets(amigos, 100, stdin);
-    amigos[strcspn(amigos, "\n")] = '\0'; // remove o caractere de nova linha
+    amigos[strcspn(amigos, "\n")] = '\0'; 
     inserir_lista_amigos(&lista, amigos);
-
+    //Leitura e inserção dos novos nomes no vetor "lista_nova"
     fgets(lista_nova, 100, stdin);
-    lista_nova[strcspn(lista_nova, "\n")] = '\0'; // remove o caractere de nova linha
-
+    lista_nova[strcspn(lista_nova, "\n")] = '\0'; 
+    //Leitura do nome do amigo que receberá a indicação
     fgets(amigo_indicacao, 20, stdin);
-    amigo_indicacao[strcspn(amigo_indicacao, "\n")] = '\0'; // remove o caractere de nova linha
-
+    amigo_indicacao[strcspn(amigo_indicacao, "\n")] = '\0';
+    //Inserção da lista_nova na lisra encadeada
     inserir_amigos_indicacao(&lista, lista_nova, amigo_indicacao);
     imprimir_lista_amigos(lista);
-
     return 0;
 }
