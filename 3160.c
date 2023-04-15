@@ -77,14 +77,14 @@ void inserir_amigos_indicacao(Amigo** lista, char lista_nova[], char amigo_indic
     }
 }
 
-//No programa principal são declaradas três strings para entrada de dados: amigos, lista_nova e amigo_indicacao
+//No programa principal são declaradas três strings para entrada de dados: a lista inicial de amigos, a lista nova e o amigo que recebe a indicaçãp
 int main() {
     char amigos[100];
     char lista_nova[100];
     char amigo_indicacao[20];
     //A lista começa vazia
     Amigo* lista = NULL;
-    //Leitura e inserção dos nomes da lista inicial na lista encadeada "lista"
+    //Leitura e inserção dos nomes da lista inicial na lista encadeada
     fgets(amigos, 100, stdin);
     amigos[strcspn(amigos, "\n")] = '\0'; 
     inserir_lista_amigos(&lista, amigos);
