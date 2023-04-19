@@ -9,7 +9,7 @@ int main(){
   for (i = 0; i < N; i++) {
     scanf("%s", nomes[i]);
   }
-  //organização dos nomes por ordem alfabética por seleção
+  //organização dos nomes por ordem alfabética usando algoritmo de seleção
   for (int i = 0; i < N-1; i++) {
     int min = i;
     for (int j = i+1; j < N; j++) {
