@@ -3,7 +3,7 @@
 
 int main(){
   int N,K,i,j;
-  char nomes[100][20],aluno_bonus[21],aux[21];
+  char nomes[100][21],aluno_bonus[21],aux[21];
   scanf("%d %d", &N, &K);
   //leitura dos nomes
   for (i = 0; i < N; i++) {
