@@ -33,16 +33,18 @@ void Mergesort(int p, int r, int v[]) {
 }
 
 int main() {
-    int n = 10000, i, v[n];
+    int n = 10000, i;
+    int *v = malloc(n * sizeof(int));
     for (i = 0; i < n; i++) {
         v[i] = rand();
     }
     clock_t start, end;
     double cpu_time_used;
     start = clock(); 
-    Mergesort(0, n, v);
+    Mergesort(0, n - 1, v);
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC; 
     printf("Tempo de execução: %f milissegundos\n", cpu_time_used * 1000);
+    free(v);
     return 0;
 }
