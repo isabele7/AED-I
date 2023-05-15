@@ -4,7 +4,7 @@
 
 #define MAX_LENGTH 100001
 
-// Recebe a palavra 'a' e o texto 'b'. Caso essa palavra esteja no texto, ela retorna 1; caso contrário, retorna 0.
+// A função busca_string ecebe a palavra 'a' e o texto 'b'. Caso essa palavra esteja no texto, ela retorna 1; caso contrário, retorna 0.
 int busca_string(char a[], char b[]) {
     int m = strlen(a), n = strlen(b), i, j;
     for (i = 0; i <= n - m; i++) {
