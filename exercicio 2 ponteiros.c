@@ -1,14 +1,3 @@
-/*Usando ponteiros, Faça um programa que use uma estrutura do tipo CD e faça a leitura de n cds (use um vetor
-de estrutura do tipo cd). A estrutura CD deve
-conter os seguintes campos:
-Nome da banda
-Data do lançamento do cd: dia, mês e ano
-Data da contratação da empresa: dia, mês e ano
-Valor do cd
-Número de membros da banda
-Produtora do cd
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
