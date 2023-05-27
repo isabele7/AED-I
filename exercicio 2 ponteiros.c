@@ -1,5 +1,4 @@
-/*Usando ponteiros, Faça um programa que use uma estrutura do
-tipo CD e faça a leitura de n cds (use um vetor
+/*Usando ponteiros, Faça um programa que use uma estrutura do tipo CD e faça a leitura de n cds (use um vetor
 de estrutura do tipo cd). A estrutura CD deve
 conter os seguintes campos:
 Nome da banda
