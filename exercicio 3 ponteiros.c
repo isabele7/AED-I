@@ -1,15 +1,3 @@
-/*Considerando a estrutura Aluno definida
-anteriormente, escreva um programa que
-contenha uma função para inicializar uma tabela
-de alunos, uma função que armazena os dados
-de um novo aluno numa dada posição do vetor,
-uma que mostre as informações do aluno numa
-dada posição do vetor (esta função deve prever
-o caso de tentar mostrar os dados em uma
-posição sem dados) e o programa principal.
-Utiliza ponteiro para estrutura para este
-programa.*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
