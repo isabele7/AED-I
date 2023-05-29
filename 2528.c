@@ -14,9 +14,7 @@ uint graph[MAXSIZE][MAXSIZE];
 
 void dijkstra(int, int, uint g[MAXSIZE][MAXSIZE], uint *);
 
-int main(int argc, char **argv)
-
-{
+int main(int argc, char **argv){
 
     int r, e, c;
 
@@ -55,12 +53,9 @@ int main(int argc, char **argv)
     }
 
     return 0;
-
 }
 
-void dijkstra(int s, int n, uint g[MAXSIZE][MAXSIZE], uint *d)
-
-{
+void dijkstra(int s, int n, uint g[MAXSIZE][MAXSIZE], uint *d){
 
     bool vis[MAXSIZE];
 
