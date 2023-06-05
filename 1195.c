@@ -70,7 +70,6 @@ int main() {
             scanf("%d", &valor);
             raiz = inserir(raiz, valor);
         }
-      
         printf("Case %d:\n", i);
         printf("Pre.:");
         percursoPrefixo(raiz);
