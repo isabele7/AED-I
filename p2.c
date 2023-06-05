@@ -1,103 +1,88 @@
 #include <stdio.h>
-
 #include <stdlib.h>
 
-struct arvore{
-
+struct arvore {
     int valor;
-
-    struct arvore *dir;
-
     struct arvore *esq;
-
+    struct arvore *dir;
 };
 
-typedef struct arvore r;
+typedef struct arvore No;
 
-void inserir(struct arvore r, int numeros){
+No* criarNo(int valor) {
+    No* novoNo = (No*)malloc(sizeof(No));
+    novoNo->valor = valor;
+    novoNo->esq = NULL;
+    novoNo->dir = NULL;
+    return novoNo;
+}
 
-    int p,f;
-
-    if(r = NULL)
-
-      numeros = r;
-
-    p = f;
-
-    if(p->valor < numeros->valor){
-
-        numeros = p;
-
+No* inserir(No* r, int numeros) {
+    if (r == NULL) {
+        return criarNo(numeros);
+    } else if (numeros < r->valor) {
+        r->esq = inserir(r->esq, numeros);
+    } else {
+        r->dir = inserir(r->dir, numeros);
     }
-
-    if()
-
+    return r;
 }
 
-void infixa(struct arvore r){
-
-    prefixa(r->esq);
-
-    printf("%d ",r->valor);
-
-    prefixa(r->dir);
-
-}
-
-void prefixa(struct arvore r){
-
-    printf("%d ",r->valor)
-
-    infixa(r->esq);
-
-    infixa(r->dir);
-
-}
-
-void posfixa(struct arvore r){
-
-    posfixa(r->esq);
-
-    posfixa(r->dir);
-
-    printf("%d ",r->valor);
-
-}
-
-int main{
-
-    int n,c,numeros;
-
-    struct arvore r = NULL;
-
-    scanf("%d",&c);
-
-    for(i=0;i<c;i++){
-
-        scanf("%d",&n);
-
-        for(j=0;j<n;j++){
-
-        scanf("%d ",&numeros);
-
-        inserir(r,numeros);
-
+void prefixa(No* r) {
+    if (r != NULL) {
+        printf("%d ", r->valor);
+        prefixa(r->esq);
+        prefixa(r->dir);
     }
+}
 
-    for(i=1;i<=c;i++){
+void infixa(No* r) {
+    if (r != NULL) {
+        infixa(r->esq);
+        printf("%d ", r->valor);
+        infixa(r->dir);
+    }
+}
 
-        printf("Case %d:\n",i);
+void posfixa(No* r) {
+    if (r != NULL) {
+        posfixa(r->esq);
+        posfixa(r->dir);
+        printf("%d ", r->valor);
+    }
+}
 
-        printf("Pre.: %d\n",prefixa(r));
+void liberarArvore(No* r) {
+    if (r != NULL) {
+        liberarArvore(r->esq);
+        liberarArvore(r->dir);
+        free(r);
+    }
+}
 
-        printf("In..: %d\n",infixa(r));
-
-        printf("Post: %d\n",posfixa(r));
-
+int main() {
+    int casos;
+    scanf("%d", &casos);
+    for (int i = 1; i <= casos; i++) {
+        int quantidade;
+        scanf("%d", &quantidade);
+        No* r = NULL;
+        for (int j = 0; j < quantidade; j++) {
+            int numeros;
+            scanf("%d", &numeros);
+            r = inserir(r, numeros);
+        }
+        printf("Case %d:\n", i);
+        printf("Pre.: ");
+        prefixa(r);
         printf("\n");
-
+        printf("In..: ");
+        infixa(r);
+        printf("\n");
+        printf("Post: ");
+        posfixa(r);
+        printf("\n\n");
+        liberarArvore(r);
     }
-
     return 0;
-
 }
